@@ -31,7 +31,6 @@ export const AddressForm: FC<PropsWithChildren<AddressFormProps>> = ({
 	const { values, setValues, dirty } = useFormContext<AddressFormData>();
 	const isValidPhoneNumber = usePhoneNumberValidator(values.countryCode);
 	const previousValues = useRef(values);
-
 	const {
 		orderedAddressFields,
 		getFieldLabel,
@@ -49,6 +48,13 @@ export const AddressForm: FC<PropsWithChildren<AddressFormProps>> = ({
 	// prevents outdated data to remain in the form when a field is
 	// no longer allowed
 	useEffect(() => {
+		if (
+			availableCountries &&
+			availableCountries.length > 0 &&
+			!availableCountries.includes(values.countryCode)
+		) {
+			void setValues({ ...values, countryCode: availableCountries[0] });
+		}
 		const hasFormDataChanged = !isMatchingAddressFormData(values, previousValues.current);
 
 		if (!hasFormDataChanged) {
