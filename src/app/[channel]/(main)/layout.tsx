@@ -4,8 +4,8 @@ import { Footer } from "@/ui/components/Footer";
 import { Header } from "@/ui/components/Header";
 
 export const metadata = {
-	title: "Saleor Storefront example",
-	description: "Starter pack for building performant e-commerce experiences with Saleor.",
+	title: "Cici Label Store - A Jaal Yantra Product",
+	description: "Cici Label is a brand powered by weavers and designers from all around the globe.",
 };
 
 export default function RootLayout(props: { children: ReactNode; params: { channel: string } }) {
